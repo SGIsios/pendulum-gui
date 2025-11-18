@@ -15,11 +15,19 @@
 			<button id="resetBtn">Reset</button>
 		</div>
 		<div id="physics-controls">
-			<label for="start-angle">alpha_0</label> <input id="start-angle"
-				type=number value="0.5"> <label for="damping">damping</label>
-			<input id="damping" type=number value="0.5"> <label
-				for="external-torque">external Torque</label> <input type="range"
-				min="-50" max="50" value="0" class="slider" id="external-torque">
+			<div class="input-row">
+				<label for="start-angle">&alpha;<sub>0</sub></label> <input
+					id="start-angle" type=number value="0.5">
+			</div>
+			<div class="input-row">
+				<label for="damping">damping</label> <input id="damping" type=number
+					value="0.5">
+			</div>
+			<div class="input-row">
+				<label for="external-torque">external Torque</label> <input
+					type="range" min="-50" max="50" value="0" class="slider"
+					id="external-torque">
+			</div>
 		</div>
 	</div>
 
