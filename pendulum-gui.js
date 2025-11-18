@@ -43,6 +43,35 @@ function drawPendulum() {
     ctx.stroke();
 }
 
+// input: current angle
+// output: controllerTorque
+const PidController = {
+	pValue: 0,
+	iValue: 0,
+	dValue: 0,
+	setAngle: 0,
+	setValues(p, i, d, angle) {
+		pValue = p;
+		iValue = i;
+		dValue = d;
+		setAngle = angle;
+	},
+	calcP(diff){
+		return pValue * diff;
+	},
+	calcI(diff){
+		return 0;
+	},
+	calcD(diff){
+		return 0;
+	},
+	calculateTorque(currentAngle) {
+		const diff = setAngle - currentAngle;
+		const torque = calcP(diff) + calcI(diff) + calcD(diff);
+		return torque;
+	}
+}
+
 function updateTorqueValue() {
 	const externalTorqueInput = document.getElementById('external-torque');
 	externalTorque = parseFloat(externalTorqueInput.value);	
