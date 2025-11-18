@@ -14,19 +14,42 @@
 			<button id="stopBtn">Stop</button>
 			<button id="resetBtn">Reset</button>
 		</div>
-		<div id="physics-controls">
-			<div class="input-row">
-				<label for="start-angle">&alpha;<sub>0</sub></label> <input
-					id="start-angle" type=number value="0.5">
+		<div class="controls-container">
+			<div id="physics-controls" class="controls">
+				<h2>Physics Controls</h2>
+				<div class="input-row">
+					<label for="start-angle">&alpha;<sub>0</sub></label> <input
+						id="start-angle" type=number value="0.5">
+				</div>
+				<div class="input-row">
+					<label for="damping">damping</label> <input id="damping"
+						type=number value="0.5">
+				</div>
+				<div class="input-row">
+					<label for="external-torque">external Torque</label> <input
+						type="range" min="-50" max="50" value="0" class="slider"
+						id="external-torque"> <span id="external-torque-output">0</span>
+				</div>
 			</div>
-			<div class="input-row">
-				<label for="damping">damping</label> <input id="damping" type=number
-					value="0.5">
-			</div>
-			<div class="input-row">
-				<label for="external-torque">external Torque</label> <input
-					type="range" min="-50" max="50" value="0" class="slider"
-					id="external-torque">
+			<div id="pid-controls" class="controls">
+				<h2>PID Controls</h2>
+				<div class="input-row">
+					<label for="set-value">set Value</label> <input type="range"
+						min="-3.14" max="3.14" value="0" class="slider" id="set-value" step="0.01">
+					<span id="set-value-output">0</span>
+				</div>
+				<div class="input-row">
+					<label for="p-value">P</label> <input id="p-value" type=number
+						value="0.5">
+				</div>
+				<div class="input-row">
+					<label for="i-value">I</label> <input id="i-value" type=number
+						value="0.5">
+				</div>
+				<div class="input-row">
+					<label for="d-value">D</label> <input id="d-value" type=number
+						value="0.5">
+				</div>
 			</div>
 		</div>
 	</div>

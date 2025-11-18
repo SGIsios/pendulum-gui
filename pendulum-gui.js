@@ -71,6 +71,19 @@ document.getElementById('startBtn').onclick = () => { running = true; update(); 
 document.getElementById('stopBtn').onclick = () => { running = false; }
 document.getElementById('resetBtn').onclick = () => {setStartingValues();}
 
+// show slider values
+const setValueSlider = document.getElementById("set-value");
+const setValueOut = document.getElementById("set-value-output");
+setValueSlider.addEventListener("input", () => {
+    setValueOut.textContent = setValueSlider.value;
+});
+
+const externalTorqueSlider = document.getElementById("external-torque");
+const externalTorqueOut = document.getElementById("external-torque-output");
+externalTorqueSlider.addEventListener("input", () => {
+    externalTorqueOut.textContent = externalTorqueSlider.value;
+});
+
 // Initial draw
 setStartingValues();
 drawPendulum();
