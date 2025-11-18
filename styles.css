@@ -13,3 +13,25 @@ button {
 	padding: 10px 20px;
 	font-size: 16px;
 }
+
+.container {
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
+	width: 800px;
+	margin: auto;
+}
+
+#physics-controls {
+	height: auto;
+	width: 300px;
+	border: 1px solid black;
+	padding-top: 20 px;
+	margin-top: 20px;
+}
+
+#physics-controls input{
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
