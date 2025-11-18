@@ -38,7 +38,7 @@ function drawPendulum() {
     // Bob
     ctx.beginPath();
     ctx.arc(x, y, 15, 0, 2*Math.PI);
-    ctx.fillStyle = 'white';
+    ctx.fillStyle = 'red';
     ctx.fill();
     ctx.stroke();
 }
