@@ -13,7 +13,6 @@ const g = 9.81; // m/s^2
 const mass = 10; // kg
 const inertia = mass * length * length;
 let running = false;
-let pidActive = false;
 
 // input: current angle
 // output: controllerTorque
@@ -22,6 +21,7 @@ const PidController = {
 	iValue: 0,
 	dValue: 0,
 	setAngle: 0,
+	active: false,
 	calcP(diff) {
 		return this.pValue * diff;
 	},
@@ -58,7 +58,7 @@ function step() {
 	angularVelocity += (-(9.8 / length) * Math.sin(angle)
 		- angularVelocity * damping
 		+ externalTorque / inertia) * dt;
-	if (pidActive) {
+	if (PidController.active) {
 		angularVelocity += (PidController.calculateTorque(angle) / inertia) * dt;
 	}
 	angle += angularVelocity * dt;
@@ -133,7 +133,7 @@ externalTorqueSlider.addEventListener("input", () => {
 });
 
 document.getElementById("activate-pid").addEventListener("change", e => {
-	pidActive = e.target.checked;
+	PidController.active = e.target.checked;
 });
 
 // Initial draw
