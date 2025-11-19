@@ -22,14 +22,21 @@ const PidController = {
 	dValue: 0,
 	setAngle: 0,
 	active: false,
+	iBuffer: 0, // buffering diff vor i-Value computation
+	AWR: 100,
+	lastDiff: 0, // saving last diff for d-Value computation
 	calcP(diff) {
 		return this.pValue * diff;
 	},
 	calcI(diff) {
-		return 0;
+		this.iBuffer += diff;
+		this.iBuffer = Math.max(-this.AWR, Math.min(this.AWR, this.iBuffer));
+		return this.iValue * this.iBuffer;
 	},
 	calcD(diff) {
-		return 0;
+		const compValue = this.dValue * (diff - this.lastDiff);
+		this.lastDiff = diff;
+		return compValue;
 	},
 	calculateTorque(currentAngle) {
 		const diff = this.setAngle - currentAngle;
