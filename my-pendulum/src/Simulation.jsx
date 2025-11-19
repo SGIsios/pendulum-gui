@@ -72,8 +72,9 @@ export default function Simulation() {
 	const handleStart = () => { runningRef.current = true; update(); };
 	const handleStop = () => { runningRef.current = false; };
 	const handleReset = () => {
-		setAngle(startAngle);
+		update();
 		angularVelocity.current = 0;
+		angle.current = startAngle;
 		drawCanvas();
 	};
 
@@ -102,6 +103,7 @@ export default function Simulation() {
 						id="damping"
 						type="number"
 						value={damping}
+						step="0.1"
 						onChange={(e) => setDamping(parseFloat(e.target.value))}
 					/>
 				</div>
