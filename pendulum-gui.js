@@ -64,7 +64,7 @@ function step() {
 	angle += angularVelocity * dt;
 }
 
-function drawPendulum() {
+function drawCanvas() {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 	const x = canvas.width / 2 + lengthOnScreen * Math.sin(angle);
@@ -84,6 +84,18 @@ function drawPendulum() {
 	ctx.fillStyle = 'red';
 	ctx.fill();
 	ctx.stroke();
+
+	//setValue
+	const x_setValue = canvas.width / 2 + lengthOnScreen * Math.sin(PidController.setAngle);
+	const y_setValue = canvas.height / 2 + lengthOnScreen * Math.cos(PidController.setAngle);
+
+	ctx.beginPath();
+	ctx.moveTo(canvas.width / 2, canvas.height / 2);
+	ctx.lineTo(x_setValue, y_setValue);
+	ctx.strokeStyle = 'gray';
+	ctx.lineWidth = 4;
+	ctx.stroke();
+
 }
 
 function setStartingValues() {
@@ -91,14 +103,14 @@ function setStartingValues() {
 	angle = parseFloat(angleInput.value);
 	updateValues();
 	angularVelocity = 0;
-	drawPendulum();
+	drawCanvas();
 }
 
 function update() {
 	if (!running) return;
 	updateValues();
 	step();
-	drawPendulum();
+	drawCanvas();
 	requestAnimationFrame(update);
 }
 
@@ -126,4 +138,4 @@ document.getElementById("activate-pid").addEventListener("change", e => {
 
 // Initial draw
 setStartingValues();
-drawPendulum();
+drawCanvas();
