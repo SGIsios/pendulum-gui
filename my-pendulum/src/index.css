@@ -74,6 +74,14 @@ canvas {
     border-radius: 8px;
 }
 
+.simulator {
+    border: 1px solid #444;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #101010;
+    border-radius: 8px;	
+}
+
 .container {
     display: flex;
     align-items: flex-start;
@@ -82,8 +90,9 @@ canvas {
     margin: 20px auto;
 }
 
-.controls-container {
+.controls {
 	display: block;
+	width: 100%;
 }
 
 .controls {

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import PendulumPhysics from './Physics.jsx';
 
 export default function Simulation() {
 	const canvasRef = useRef(null);
@@ -80,42 +81,43 @@ export default function Simulation() {
 
 	return (
 		<>
-			<div className="simulation">
-				<canvas ref={canvasRef} width="400" height="500"></canvas>
-				<br />
+			<div className="simulator">
 				<button onClick={handleStart}>Start</button>
 				<button onClick={handleStop}>Stop</button>
 				<button onClick={handleReset}>Reset</button>
-			</div>
+				<div className="physics_simulation">
+					<canvas ref={canvasRef} width="400" height="500"></canvas>
 
-			<div id="physics-controls" className="controls">
-				<h2>Physics Controls</h2>
-				<div className="input-row">
-					<label htmlFor="start-angle">&alpha;<sub>0</sub></label> <input
-						id="start-angle"
-						type="number"
-						value={startAngle}
-						onChange={(e) => setStartAngle(parseFloat(e.target.value))}
-					/>
-				</div>
-				<div className="input-row">
-					<label htmlFor="damping">damping</label> <input
-						id="damping"
-						type="number"
-						value={damping}
-						step="0.1"
-						onChange={(e) => setDamping(parseFloat(e.target.value))}
-					/>
-				</div>
-				<div className="input-row">
-					<label htmlFor="external-torque">external Torque</label> <input
-						type="range"
-						min="-50"
-						max="50"
-						value={externalTorque}
-						onChange={(e) => setExternalTorque(parseFloat(e.target.value))}
-					/>
-					<span>{externalTorque}</span>
+					<div id="physics-controls" className="controls">
+						<h2>Physics Controls</h2>
+						<div className="input-row">
+							<label htmlFor="start-angle">&alpha;<sub>0</sub></label> <input
+								id="start-angle"
+								type="number"
+								value={startAngle}
+								onChange={(e) => setStartAngle(parseFloat(e.target.value))}
+							/>
+						</div>
+						<div className="input-row">
+							<label htmlFor="damping">damping</label> <input
+								id="damping"
+								type="number"
+								value={damping}
+								step="0.1"
+								onChange={(e) => setDamping(parseFloat(e.target.value))}
+							/>
+						</div>
+						<div className="input-row">
+							<label htmlFor="external-torque">external Torque</label> <input
+								type="range"
+								min="-50"
+								max="50"
+								value={externalTorque}
+								onChange={(e) => setExternalTorque(parseFloat(e.target.value))}
+							/>
+							<span>{externalTorque}</span>
+						</div>
+					</div>
 				</div>
 			</div>
 		</>
